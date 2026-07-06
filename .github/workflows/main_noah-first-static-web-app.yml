@@ -1,4 +1,4 @@
-name: Deploy static website to Azure Web App
+name: Deploy static site to Azure Web App
 
 on:
   push:
@@ -10,12 +10,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    permissions:
-      id-token: write
-      contents: read
-
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
 
       - name: Login to Azure
@@ -29,4 +25,4 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: Noah-first-static-web-app
-          package: .
+          package: ./src
