@@ -1,4 +1,4 @@
-name: Deploy static site to Azure Web App
+name: Deploy Static Web App
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
   workflow_dispatch:
 
-  permissions:
+permissions:
   id-token: write
   contents: read
 
@@ -17,13 +17,6 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_5F52B2F0096E43C685B91E2EB9E2205D }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_F9F08C918D314BFA92659D6A36BCB06E }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_2B212801BEE445D2B1CF64FB55E8042C }}
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
